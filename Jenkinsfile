@@ -13,7 +13,7 @@ node {
         stage('Deploy') {
             sh './jenkins/scripts/deliver.sh'
             withCredentials([usernameColonPassword(credentialsId: 'Heroku', variable: 'PASS')]) {
-                sh 'git push https://${PASS}@git.heroku.com/ci-cd-java-app-akhsaul.git master'
+                sh 'git push https://${PASS}@git.heroku.com/ci-cd-java-app-akhsaul.git HEAD:master'
             }
             sleep(time:1, unit:"MINUTES")
         }
