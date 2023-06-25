@@ -12,6 +12,7 @@ node {
         }
         stage('Deploy') {
             sh './jenkins/scripts/deliver.sh'
+            sh 'chmod u+x ./jenkins/scripts/deploy.sh'
             sh './jenkins/scripts/deploy.sh'
             sleep(time:1, unit:"MINUTES")
         }
