@@ -12,7 +12,7 @@ node {
         }
         stage('Deploy') {
             sh './jenkins/scripts/deliver.sh'
-            sh 'git push heroku master'
+            sh 'git push https://git.heroku.com/ci-cd-java-app-akhsaul.git master'
             sleep(time:1, unit:"MINUTES")
         }
     } 
