@@ -12,8 +12,9 @@ node {
         }
         stage('Deploy') {
             sh './jenkins/scripts/deliver.sh'
-            sh 'chmod u+x ./jenkins/scripts/deploy.sh'
-            sh './jenkins/scripts/deploy.sh'
+            withCredentials([usernameColonPassword(credentialsId: 'Heroku', variable: 'PASS')]) {
+                sh 'git push https://${PASS}@git.heroku.com/ci-cd-java-app-akhsaul.git master'
+            }
             sleep(time:1, unit:"MINUTES")
         }
     } 
